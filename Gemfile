@@ -26,6 +26,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
+  # gem 'spring-commands-rspec' # Recommended by author
   gem 'faker', require: false # for sample data in development
 end
 
