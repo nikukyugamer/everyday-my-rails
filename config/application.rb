@@ -9,10 +9,10 @@ module Projects
 
     config.generators do |g|
       g.test_framework :rspec,
-        fixtures: false,
-        view_specs: false,
-        helper_specs: false,
-        routing_specs: false
+        fixtures: false, # テストデータベースにレコードを作成するファイルの作成をスキップ（FactoryBot を使うため）
+        view_specs: false, # ビュースペックは用いずに、さらにフィーチャースペックも用いずに、システムスペックを用いる
+        helper_specs: false, # ヘルパファイルは現時点ではテストしない
+        routing_specs: false # ルーティングスペックは現時点ではテストしない（アプリが大きくなったら考える）
     end
   end
 end
