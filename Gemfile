@@ -18,13 +18,16 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'web-console'
   gem 'listen'
+  gem 'rubocop-rails'
   gem 'spring'
   gem 'spring-watcher-listen'
+  gem 'spring-commands-rspec' # Recommended by author
   gem 'faker', require: false # for sample data in development
 end
 
