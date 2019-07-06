@@ -17,6 +17,7 @@ gem 'uglifier'
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
+  gem 'pry-rails'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
 end

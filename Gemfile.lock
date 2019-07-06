@@ -66,6 +66,7 @@ GEM
     childprocess (1.0.1)
       rake (< 13.0)
     climate_control (0.2.0)
+    coderay (1.1.2)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 5.2.0)
@@ -131,6 +132,11 @@ GEM
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (3.0.3)
     puma (3.12.1)
     rack (2.0.7)
@@ -272,6 +278,7 @@ DEPENDENCIES
   jquery-rails
   listen
   paperclip
+  pry-rails
   puma
   rails
   rspec-rails
