@@ -1,6 +1,9 @@
 # Rails:
 #   Enabled: true
 
+Style/TrailingCommaInArguments:
+  Enabled: false
+
 Style/MixinUsage:
   Enabled: false
 
