@@ -41,18 +41,8 @@ RSpec.describe User, type: :model do
 
   # 重複したメールアドレスなら無効な状態であること
   it 'is invalid with a duplicate email address' do
-    User.create(
-      first_name: 'Joe',
-      last_name: 'Tester',
-      email: 'tester@example.com',
-      password: 'dottle-nouveau-pavilion-tights-fuzure'
-    )
-    user = User.new(
-      first_name: 'Jane',
-      last_name: 'Tester',
-      email: 'tester@example.com',
-      password: 'dottle-nouveau-pavilion-tights-fuzure'
-    )
+    FactoryBot.create(:user, email: 'aaron@example.com') # 重複判定のために、データベースに保存する (create)
+    user = FactoryBot.build(:user, email: 'aaron@example.com') # build はメモリ上にオブジェクトを生成売る
     user.valid?
     expect(user.errors[:email]).to include('has already been taken')
   end
