@@ -1,12 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
+  before do
+    @user = User.create(
+      first_name: 'Joe',
+      last_name: 'Tester',
+      email: 'joetester@example.com',
+      password: 'dottle-nouveau-pavilion-tights-furze',
+    )
+
+    @project = @user.projects.create(
+      name: 'Test Project',
+    )
+  end
+
+  # ユーザー、プロジェクト、メッセージ があれば有効な状態であること
+  it 'is valid with a user, project, and message' do
+    note = Note.new(
+      message: 'This is a sample note.',
+      user: @user,
+      project: @project,
+    )
+    expect(note).to be_valid
+  end
+
   # 文字列に一致するメッセージを検索する
   describe 'search message for a term' do
     # 一致するデータが見つかるとき
     context 'when a match is found' do
       # 検索文字列に一致するメモを返すこと
-      it 'when a match is found' do
+      xit 'when a match is found' do
         user = User.create(
           first_name: 'Joe',
           last_name: 'Tester',
@@ -42,7 +65,7 @@ RSpec.describe Note, type: :model do
     # 一致するデータが 1件 も見つからないとき
     context 'when no match is found' do
       # 空のコレクションを返すこと
-      it 'returns an empty collection when no results are found' do
+      xit 'returns an empty collection when no results are found' do
         user = User.create(
           first_name: 'Joe',
           last_name: 'Tester',
