@@ -33,4 +33,37 @@ RSpec.describe Note, type: :model do
     expect(Note.search('first')).to include(note1, note3)
     expect(Note.search('first')).to_not include(note2)
   end
+
+  # 検索結果が一見も見つからなければ空のコレクションを返すこと
+  it 'returns an empty collection when no results are found' do
+    user = User.create(
+      first_name: 'Joe',
+      last_name: 'Tester',
+      email: 'joetester@example.com',
+      password: 'dottle-nouveau-pavilion-tights-furze',
+    )
+
+    project = user.projects.create(
+      name: 'Test Project',
+    )
+
+    # rubocop:disable Lint/UselessAssignment
+    note1 = project.notes.create(
+      message: 'This is the first note.',
+      user: user,
+    )
+
+    note2 = project.notes.create(
+      message: 'This is the second note.',
+      user: user,
+    )
+
+    note3 = project.notes.create(
+      message: 'First, preheat the oven.',
+      user: user,
+    )
+    # rubocop:enable Lint/UselessAssignment
+
+    expect(Note.search('message')).to be_empty
+  end
 end
