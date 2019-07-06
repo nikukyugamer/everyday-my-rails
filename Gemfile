@@ -24,6 +24,7 @@ end
 group :development do
   gem 'web-console'
   gem 'listen'
+  gem 'rubocop-rails'
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'spring-commands-rspec' # Recommended by author
