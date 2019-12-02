@@ -1,6 +1,6 @@
 require:
   - rubocop-rails
-#   - rubocop-rspec
+  - rubocop-rspec
 
 Style/TrailingCommaInArguments:
   Enabled: false
