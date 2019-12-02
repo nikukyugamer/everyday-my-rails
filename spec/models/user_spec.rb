@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # 姓、名、メール、パスワードがあれば有効な状態であること
-  it 'is valid with a first name, last name, email, and password' do
+  it '姓、名、メール、パスワードがあれば有効な状態であること' do
     user = User.new(
       first_name: 'Aaron',
       last_name: 'Sumner',
@@ -12,29 +11,25 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  # 「名」がなければ無効な状態であること
-  it 'is invalid without a first name' do
+  it '「名」がなければ無効な状態であること' do
     user = User.new(first_name: nil)
     user.valid?
     expect(user.errors[:first_name]).to include("can't be blank")
   end
 
-  # 「姓」がなければ無効な状態であること
-  it 'is invalid without a last name' do
+  it '「姓」がなければ無効な状態であること' do
     user = User.new(last_name: nil)
     user.valid?
     expect(user.errors[:last_name]).to include("can't be blank")
   end
 
-  # メールアドレスがなければ無効な状態であること
-  it 'is invalid without an email address' do
+  it 'メールアドレスがなければ無効な状態であること' do
     user = User.new(email: nil)
     user.valid?
     expect(user.errors[:email]).to include("can't be blank")
   end
 
-  # 重複したメールアドレスなら無効な状態であること
-  it 'is invalid with a duplicate email address' do
+  it '重複したメールアドレスなら無効な状態であること' do
     User.create(
       first_name: 'Joe',
       last_name: 'Tester',
@@ -51,8 +46,7 @@ RSpec.describe User, type: :model do
     expect(user.errors[:email]).to include('has already been taken')
   end
 
-  # ユーザーのフルネームを文字列として返すこと
-  it "returns a user's full name as a string" do
+  it 'ユーザーのフルネームを文字列として返すこと' do
     user = User.new(
       first_name: 'John',
       last_name: 'Doe',
