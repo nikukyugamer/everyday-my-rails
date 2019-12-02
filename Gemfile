@@ -26,7 +26,6 @@ group :development do
   gem 'faker', require: false # for sample data in development
   gem 'listen'
   gem 'rubocop-rails'
-  gem 'rubocop-rspec'
   gem 'spring'
   gem 'spring-commands-rspec' # Recommended by author
   gem 'spring-watcher-listen'
