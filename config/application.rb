@@ -5,7 +5,7 @@ Bundler.require(*Rails.groups)
 
 module Projects
   class Application < Rails::Application
-    config.load_defaults 5.1
+    config.load_defaults 6.0
 
     # SQLite3 の boolean 型 カラム についての処理
     config.active_record.sqlite3.represent_boolean_as_integer = true
