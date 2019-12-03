@@ -8,7 +8,7 @@ module Projects
     config.load_defaults 6.0
 
     # SQLite3 の boolean 型 カラム についての処理
-    config.active_record.sqlite3.represent_boolean_as_integer = true
+    # config.active_record.sqlite3.represent_boolean_as_integer = true
 
     config.generators do |g|
       g.test_framework(
