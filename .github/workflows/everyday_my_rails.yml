@@ -34,6 +34,16 @@ jobs:
       run: |
         apt-get update
         apt-get install -y fonts-noto
+    - name: Get yarn cache
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - name: Cache Yarn packages
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+            ${{ runner.os }}-yarn-
     - name: Yarn のインストールを行う
       run: |
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
