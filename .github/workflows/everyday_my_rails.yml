@@ -43,6 +43,13 @@ jobs:
     - name: $ gem install bundler -v 2.0.2 --no-document を行う
       run: |
         gem install bundler -v 2.0.2 --no-document
+    - name: Cache RubyGems
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
     - name: $ bundle install --jobs 4 --retry 3 --deployment を行う
       run: |
         bundle install --jobs 4 --retry 3 --deployment
