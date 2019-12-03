@@ -85,15 +85,10 @@ jobs:
     # - name: $ bundle exec rails assets:precompile を行う
     #   run: |
     #     bundle exec rails assets:precompile
-    # - name: RSpec を実行する
-    #   if: always()
-    #   run: |
-    #     cp .env.github_actions .env
-    #     bundle exec rspec
-    #     if [ -f tmp/pids/server.pid ]; then rm -f tmp/pids/server.pid ; fi
-    #   env:
-    #     PGHOST: postgres
-    #     RAILS_ENV: test
+    - name: RSpec を実行する
+      if: always()
+      run: |
+        bundle exec rspec
     # - name: Jest を実行する（GitHub Actions 上でいきなり失敗し始めたので保留中）
     #   if: always()
     #   run: |
