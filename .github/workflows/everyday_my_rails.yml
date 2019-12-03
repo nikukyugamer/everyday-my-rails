@@ -34,6 +34,12 @@ jobs:
       run: |
         apt-get update
         apt-get install -y fonts-noto
+    - name: Yarn のインストールを行う
+      run: |
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+        apt-get update
+        apt-get install -y yarn
     - name: Get yarn cache
       id: yarn-cache
       run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -44,12 +50,6 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
             ${{ runner.os }}-yarn-
-    - name: Yarn のインストールを行う
-      run: |
-        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-        apt-get update
-        apt-get install -y yarn
     - name: $ gem install bundler -v 2.0.2 --no-document を行う
       run: |
         gem install bundler -v 2.0.2 --no-document
