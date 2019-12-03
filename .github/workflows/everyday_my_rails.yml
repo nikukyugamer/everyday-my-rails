@@ -1,5 +1,5 @@
 on: [push]
-name: EMAP ZELOS
+name: Everyday My Rails
 jobs:
   everyday_github_actions:
     name: Everyday My Rails CI
@@ -50,9 +50,9 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
-    - name: $ bundle install --jobs 4 --retry 3 --deployment を行う
+    - name: $ bundle install --jobs 4 --retry 3 --deployment --path vendor/bundle を行う
       run: |
-        bundle install --jobs 4 --retry 3 --deployment
+        bundle install --jobs 4 --retry 3 --deployment --path vendor/bundle
     - name: $ yarn install を行う
       run: |
         yarn install
