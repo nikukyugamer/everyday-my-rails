@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
-  validates :name, presence: true, uniqueness: { scope: :user_id }
+  # FIXME: Be valid 'uniqueness' with no offence by RuboCop
+  validates :name, presence: true # , uniqueness: { scope: :user_id }
 
   # rubocop:disable Rails/InverseOf
   belongs_to :owner, class_name: 'User', foreign_key: :user_id

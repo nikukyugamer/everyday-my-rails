@@ -36,8 +36,9 @@ Style/TrailingCommaInArrayLiteral:
   Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
   # EnforcedStyleForMultiline: consistent_comma
 
-Style/BracesAroundHashParameters:
-  Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
+# Obsolete になったためにコメント化（後に削除すること）
+# Style/BracesAroundHashParameters:
+#   Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
   # EnforcedStyle: context_dependent
 
 Layout/TrailingEmptyLines:
