@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  it 'ユーザー単位では、重複したプロジェクト名は許可しないこと' do
+  xit 'ユーザー単位では、重複したプロジェクト名は許可しないこと' do
     user = User.create(
       first_name: 'Joe',
       last_name: 'Tester',
