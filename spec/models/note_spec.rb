@@ -14,8 +14,7 @@ RSpec.describe Note, type: :model do
     )
   end
 
-  # ユーザー、プロジェクト、メッセージ があれば有効な状態であること
-  it 'is valid with a user, project, and message' do
+  it 'ユーザー、プロジェクト、メッセージ があれば有効な状態であること' do
     note = Note.new(
       message: 'This is a sample note.',
       user: @user,
@@ -24,15 +23,13 @@ RSpec.describe Note, type: :model do
     expect(note).to be_valid
   end
 
-  # メッセージがなければ無効な状態であること
-  it 'is invalid without a message' do
+  it 'メッセージがなければ無効な状態であること' do
     note = Note.new(message: nil)
     note.valid?
     expect(note.errors[:message]).to include("can't be blank")
   end
 
-  # 文字列に一致するメッセージを検索する
-  describe 'search message for a term' do
+  describe '文字列に一致するメッセージを検索する' do
     before do
       @note1 = @project.notes.create(
         message: 'This is the first note.',
@@ -48,23 +45,19 @@ RSpec.describe Note, type: :model do
       )
     end
 
-    # 一致するデータが見つかるとき
-    context 'when a match is found' do
-      # 検索文字列に一致するメモを返すこと
-      it 'returns notes that match the search term' do
+    context '一致するデータが見つかるとき' do
+      it '検索文字列に一致するメモを返すこと' do
         # search スコープ は 検索文字列 に一致するメモのコレクションを返す (downcase)
         expect(Note.search('first')).to include(@note1, @note3)
       end
 
-      it "doesn't return notes that doesn't match the search term" do
+      it '検索文字列に一致しないメモを返さないこと' do
         expect(Note.search('first')).to_not include(@note2)
       end
     end
 
-    # 一致するデータが 1件 も見つからないとき
-    context 'when no match is found' do
-      # 空のコレクションを返すこと
-      it 'returns an empty collection' do
+    context '一致するデータが 1件 も見つからないとき' do
+      it '返り値は空っぽであること' do
         expect(Note.search('message')).to be_empty
       end
     end

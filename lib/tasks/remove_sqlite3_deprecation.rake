@@ -1,8 +1,10 @@
 namespace :remove_sqlite3_deprecation do
   desc 'Remove deprecations about SQLite3'
   task execute: :environment do
+    # rubocop:disable Rails/SkipsModelValidations
     Task.where("completed = 't'").update_all(completed: 1)
     Task.where("completed = 'f'").update_all(completed: 0)
+    # rubocop:enable Rails/SkipsModelValidations
   end
 end
 

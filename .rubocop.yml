@@ -1,5 +1,17 @@
-# Rails:
-#   Enabled: true
+# inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/**/*'
+    - 'db/schema.rb'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
 
 Style/TrailingCommaInArguments:
   Enabled: false
@@ -24,11 +36,12 @@ Style/TrailingCommaInArrayLiteral:
   Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
   # EnforcedStyleForMultiline: consistent_comma
 
-Style/BracesAroundHashParameters:
-  Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
+# Obsolete になったためにコメント化（後に削除すること）
+# Style/BracesAroundHashParameters:
+#   Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
   # EnforcedStyle: context_dependent
 
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Enabled: false # 有効にした場合、コメントが最終行だとどんな設定にしてても怒られるため無効にする
 
 Style/AsciiComments:
