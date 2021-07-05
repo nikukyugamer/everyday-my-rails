@@ -16,7 +16,7 @@ jobs:
           POSTGRES_PASSWORD: torokuro
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: 基本パッケージのインストールを行う
       run: |
         apt-get update
