@@ -41,9 +41,8 @@ class User < ApplicationRecord
   def generate_authentication_token
     loop do
       token = Devise.friendly_token
-      # rubocop:disable Rails/FindBy
+
       break token unless User.where(authentication_token: token).first
-      # rubocop:enable Rails/FindBy
     end
   end
 
