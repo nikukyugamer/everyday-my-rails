@@ -16,7 +16,7 @@ jobs:
           POSTGRES_PASSWORD: torokuro
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: 基本パッケージのインストールを行う
       run: |
         apt-get update
@@ -44,7 +44,7 @@ jobs:
       id: yarn-cache
       run: echo "::set-output name=dir::$(yarn cache dir)"
     - name: Yarn のキャッシュファイルを取得する
-      uses: actions/cache@v1
+      uses: actions/cache@v2
       with:
         path: ${{ steps.yarn-cache.outputs.dir }}
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -54,7 +54,7 @@ jobs:
       run: |
         gem install bundler -v 2.0.2 --no-document
     - name: Cache RubyGems
-      uses: actions/cache@v1
+      uses: actions/cache@v2
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
